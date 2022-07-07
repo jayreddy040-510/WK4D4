@@ -41,3 +41,25 @@ end
    Works with different types of elements  =>  expect ["dog", "dog", [1,1],[1,1], 3,3,4,"cat"].my_uniq 
                                                to eq  ["dog",[1,1], 3,4,"cat"]
 =end
+
+
+describe "#two_sum" do
+    let(:arr) {[1, -3, 3, 4, -5, -33, 33, 16, 17]}
+
+    it "Indices of numbers that sum to zero are returned" do
+    
+        expect(arr.two_sum).to eq([[1,2],[5,6]])
+
+    end
+
+    it "Puts the indices in the appropriate order" do
+        (0...arr.two_sum.length - 1).each do |i| 
+            expect(arr.two_sum[i][1] >  arr.two_sum[i][0]).to eq( true)
+        end
+        arr.two_sum.each_with_index do |ele,i| 
+            next if i ==  arr.two_sum.length - 1
+            expect(ele[0] <=  arr.two_sum[i+1][0]).to eq( true)
+        end
+    end
+    
+end
