@@ -73,3 +73,20 @@ describe "#my_transpose" do
    end
 
 end
+
+
+describe "stock_picker" do
+    let(:arr) {[34,65,22,32,59,103,2,29]}
+
+    it "sell day should be after buy day" do 
+        expect(stock_picker(arr)[0] < stock_picker(arr)[1]).to eq(true)
+    end
+
+    it "returns the indices of the greatest trade" do
+
+        expect(stock_picker(arr)).to eq([2,5])
+
+    end
+
+
+end

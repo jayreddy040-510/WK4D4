@@ -26,3 +26,17 @@ class Array
 
 end
 
+
+def stock_picker(arr)
+    pairs = []
+    max_diff = [[arr[0],0],[arr[1],1]]
+    (0...arr.length).each do |i| 
+        (i+1...arr.length).each do |j| 
+            pairs << [[arr[i],i],[arr[j],j]] if j > i 
+        end
+    end
+    pairs.each {|ele| max_diff = ele if (ele[1][0] - ele[0][0]) > (max_diff[1][0] - max_diff[0][0])  }
+    return [max_diff[0][1],max_diff[1][1]]
+
+end
+
